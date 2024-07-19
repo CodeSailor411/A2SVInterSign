@@ -11,26 +11,13 @@ In addition to translating audio to sign language, InterSign also enables users 
 # Approximative Approach of the structure of the repo !
 InterSign/
 ├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── models.py
-│   │   ├── routes.py
-│   │   ├── utils.py
+
 ├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   ├── src/
-│   │   ├── components/
-│   │   ├── App.js
-│   │   ├── index.js
-│   ├── package.json
+
 ├── mobile/
-│   ├── lib/
-│   │   ├── main.dart
-│   ├── pubspec.yaml
+
 ├── models/
-│   ├── sign_language_model/
-│   │   ├── train.py
-│   │   ├── model.py
+
 ├── docker-compose.yml
+
 ├── README.md
