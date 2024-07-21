@@ -58,3 +58,12 @@ Some screenshots of both main features:
 ![Capture d’écran 2024-07-21 140424](https://github.com/user-attachments/assets/cb66bb66-8d7f-4c7e-8f1a-a38be12871c4)
 ![Capture d’écran 2024-07-21 140445](https://github.com/user-attachments/assets/fba94e6e-0b0d-4fe0-abf5-1d0ed52b73a9)
 ![Capture d'écran 2024-07-21 140458](https://github.com/user-attachments/assets/ceb693f2-b19e-43ef-b8f8-e3d307a7e774)
+
+
+
+Sign language to speech:
+
+![vlcsnap-2024-07-21-14h07m28s503](https://github.com/user-attachments/assets/a596328b-16dd-421d-8f7a-2467d7aa1808)
+![vlcsnap-2024-07-21-14h07m03s107](https://github.com/user-attachments/assets/1a8e2a9d-6979-40b5-b76f-dccbc98a166e)
+![vlcsnap-2024-07-21-14h06m52s070](https://github.com/user-attachments/assets/d701b6e9-04f2-481d-9fdb-ff542df153dd)
+![vlcsnap-2024-07-21-14h06m44s615](https://github.com/user-attachments/assets/35ccbc5e-4ac9-47d8-bffd-adfed2092fb5)
