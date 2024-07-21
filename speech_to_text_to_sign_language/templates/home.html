@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="form-style" align="middle">
+        <a href="{% url 'animation' %}"><button class="button">Click to Start</button></a>
+    </div>
+    {% endblock %}
+</body>
+</html>

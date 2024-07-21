@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .content-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #ffffff; /* White background */
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 28px;
+        color: #333;
+        margin: 20px 0;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: #ddd;
+        margin: 20px 0;
+    }
+
+    .td {
+        font-size: 18px;
+        color: #555;
+    }
+</style>
+
+<div class="content-container">
+    <h2>VERSION 1.0.0</h2>
+    <hr>
+    <h2>CONTACT US</h2>
+    <hr>
+    <p class="td">Thank you for visiting our website</p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background-color: white;
+        color: black;
+    }
+    .split {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .split.left {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+    .split.right {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+    .mytext, .submit, .mic {
+        margin: 10px;
+    }
+    .td {
+        padding: 10px;
+        text-align: left;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    ul.td {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-right: 8px;
+    }
+    .submit, .mic {
+        cursor: pointer;
+    }
+    .submit {
+        background-color: #000;
+        color: #fff;
+    }
+    .mic img {
+        vertical-align: middle;
+    }
+    .mic {
+        /* background-color: transparent; */
+        border: none;
+        cursor: pointer;
+    }
+    #videoPlayer {
+        border: 2px solid black;
+    }
+</style>
+
+<div class="split left">
+    <h2 align="center">Enter Text or Use Mic</h2>
+    <br>
+    <form action="" method="post" align="left">
+        {% csrf_token %}
+        <input type="text" name="sen" class="mytext" id="speechToText" placeholder="Enter Text or Use Mic">
+        <button type="button" name="button" class="mic" onclick="record()">
+            <img src="{% static 'mic3.png' %}" height="32px" width="38px" />
+        </button>
+        &nbsp&nbsp&nbsp&nbsp
+        <input type="submit" name="submit" class="submit">
+    </form>
+    <br>
+    <table cellspacing="20px">
+        <tr>
+            <td class="td">The text that you entered is:</td>
+            <td class="td">{{ text }}</td>
+        </tr>
+        <tr>
+            <td class="td">Key words in sentence to be translated</td>
+            <td class="td">
+                <ul class="td" id="list" align="center">
+                    {% for word in words %}
+                    <li id="{{ i }}" style="margin-right: 8px">{{ word }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="split right">
+    <h2 align="center">Sign Language Animation</h2>
+    <div style="text-align:center"> &nbsp&nbsp
+		<button class="submit" onclick="playPause()">Play/Pause</button>
+        <button class="submit" onclick="makeBig()">Big</button>
+        <button class="submit" onclick="makeSmall()">Small</button>
+        <button class="submit" onclick="makeNormal()">Normal</button>
+        <video id="videoPlayer" width="600" height="350" preload="auto" autoplay>
+            <source src="" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+</div>
+
+<script>
+    //webkitSpeechRecognition api for speech to text conversion
+    function record(){
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang='en-IN';
+
+        recognition.onresult = function(event){
+            console.log(event);
+            document.getElementById('speechToText').value = event.results[0][0].transcript;
+        }
+        recognition.start();
+    }
+
+    function play() {
+        var videoSource = new Array();
+        var videos = document.getElementById("list").getElementsByTagName("li");
+        var j;
+        for(j=0;j<videos.length;j++) {
+            videoSource[j] = "/static/" + videos[j].innerHTML + ".mp4";
+        }
+
+        var i = 0; // define i
+        var videoCount = videoSource.length;
+
+        function videoPlay(videoNum) {
+            document.getElementById("list").getElementsByTagName("li")[videoNum].style.color = "#09edc7";
+            document.getElementById("list").getElementsByTagName("li")[videoNum].style.fontSize = "xx-large";
+            document.getElementById("videoPlayer").setAttribute("src", videoSource[videoNum]);
+            document.getElementById("videoPlayer").load();
+            document.getElementById("videoPlayer").play();
+        }
+
+        document.getElementById('videoPlayer').addEventListener('ended', myHandler, false);
+        document.getElementById("list").getElementsByTagName("li")[0].style.color = "#09edc7";
+        document.getElementById("list").getElementsByTagName("li")[0].style.fontSize = "xx-large";
+
+        videoPlay(0); // play the video
+
+        function myHandler() {
+            document.getElementById("list").getElementsByTagName("li")[i].style.color = "#feda6a";
+            document.getElementById("list").getElementsByTagName("li")[i].style.fontSize = "20px";
+            i++;
+            if (i == videoCount) {
+                document.getElementById("videoPlayer").pause();
+            } else {
+                videoPlay(i);
+            }
+        }
+    }
+
+    function playPause() {
+        if (document.getElementById("videoPlayer").paused) {
+            play();
+        } else {
+            document.getElementById("videoPlayer").pause();
+        }
+    }
+</script>
+
+{% endblock %}
